@@ -1,0 +1,60 @@
+// no-server-key: read-only — pending Stage A-E member-signed-writes refactor per ADR-2605231525
+{
+  "name": "kotodama-d0g4k4x1",
+  "main": "src/app.ts",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": ["nodejs_compat", "nodejs_als"],
+  "alias": {
+    "@etzhayyim/kotodama-host-sdk": "/Users/junkawasaki/etzhayyim/etzhayyim-apps-etzhayyim/40-engine/kotoba/crates/kotoba-kotodama/sdk/kotodama-host-sdk/src/index.ts",
+    "@etzhayyim/xrpc/transport": "/Users/junkawasaki/etzhayyim/etzhayyim-apps-etzhayyim/10-protocol/xrpc/src/transport.ts",
+    "@etzhayyim/xrpc/auth": "/Users/junkawasaki/etzhayyim/etzhayyim-apps-etzhayyim/10-protocol/xrpc/src/auth.ts",
+    "@etzhayyim/xrpc/error": "/Users/junkawasaki/etzhayyim/etzhayyim-apps-etzhayyim/10-protocol/xrpc/src/error.ts",
+    "@etzhayyim/xrpc/nsid": "/Users/junkawasaki/etzhayyim/etzhayyim-apps-etzhayyim/10-protocol/xrpc/src/nsid.ts",
+    "@etzhayyim/xrpc/encode": "/Users/junkawasaki/etzhayyim/etzhayyim-apps-etzhayyim/10-protocol/xrpc/src/encode.ts"
+  },
+  "assets": {
+    "directory": "./svelte/build",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application"
+  },
+  "vars": {
+    "APP_ACTOR_HANDLE": "dogaka",
+    "APP_CAPABILITIES": "[\"shot-management\",\"usd-scene-graph\",\"neural-geometry\",\"temporal-field\",\"neural-render\",\"diffusion-cinematic\",\"exr-composite\",\"final-encode\"]",
+    "APP_DESCRIPTION": "3D cinematic video appview -- author USD shots and render through the 8-stage kami-cine neural pipeline.",
+    "APP_DISPLAY_NAME": "Dogaka",
+    "APP_EMBED_MODE": "viewport",
+    "APP_EMBED_URL": "https://d0g4k4x1.etzhayyim.com/?embed=1",
+    "APP_FRAMEWORK": "ts-native",
+    "APP_NANOID": "d0g4k4x1",
+    "APP_PERFORMER_TYPE": "service",
+    "APP_UI_TYPE": "appview",
+    "B2_BUCKET": "etzhayyim-cdn",
+    "B2_ENDPOINT": "s3.us-west-004.backblazeb2.com",
+    "B2_REGION": "us-west-004",
+    "DISPATCHER_URL": "https://dispatcher.etzhayyim.com"
+  },
+  "r2_buckets": [
+    { "binding": "CACHE_R2", "bucket_name": "etzhayyim-cache" }
+  ],
+  "services": [
+    { "binding": "PDS_SERVICE", "service": "etzhayyim-pds-2603241700" },
+    { "binding": "PDS_RPC", "service": "etzhayyim-pds-2603241700", "entrypoint": "PdsRPC" },
+    { "binding": "MURAKUMO_SERVICE", "service": "etzhayyim-murakumo-2603241700" },
+    { "binding": "COMFYUI_SERVICE", "service": "etzhayyim-comfyui-2604221600" }
+  ],
+  "secrets_store_secrets": [
+    { "binding": "SS_OPENROUTER_API_KEY", "store_id": "1824561668fe47cc9127d493961885af", "secret_name": "openrouter_api_key" },
+    { "binding": "SS_PUBLIC_CLERK_PUBLISHABLE_KEY", "store_id": "1824561668fe47cc9127d493961885af", "secret_name": "public_clerk_publishable_key" },
+    { "binding": "SS_CLERK_SECRET_KEY", "store_id": "1824561668fe47cc9127d493961885af", "secret_name": "clerk_secret_key" },
+    { "binding": "SS_SIGNING_KEY", "store_id": "1824561668fe47cc9127d493961885af", "secret_name": "signing_key" },
+    { "binding": "DISPATCHER_INTERNAL_SECRET", "store_id": "1824561668fe47cc9127d493961885af", "secret_name": "dispatcher_internal_secret" }
+  ],
+  "rules": [
+    { "type": "CompiledWasm", "globs": ["**/*.wasm"] }
+  ],
+  "routes": [
+    { "pattern": "d0g4k4x1.etzhayyim.com/*", "zone_name": "etzhayyim.com" },
+    { "pattern": "dogaka.etzhayyim.com/*", "zone_name": "etzhayyim.com" }
+  ]
+}

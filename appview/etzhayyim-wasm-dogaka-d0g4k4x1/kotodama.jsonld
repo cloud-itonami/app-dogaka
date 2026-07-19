@@ -1,0 +1,89 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:dogaka.etzhayyim.com",
+  "component": {
+    "env": {
+      "APP_EMBED_MODE": "viewport",
+      "B2_ENDPOINT": "s3.us-west-004.backblazeb2.com",
+      "B2_BUCKET": "etzhayyim-cdn",
+      "B2_REGION": "us-west-004"
+    },
+    "path": "component.wasm"
+  },
+  "convoSystemPrompt": "You are etzhayyim-wasm-dogaka agent. 3D cinematic video creation platform powered by KAMI Engine + the 8-stage kami-cine pipeline (world model -> USD scene -> neural geometry -> 4D temporal field -> neural render -> diffusion pass -> EXR sequence -> final encode). Help users author shots, sequences, and full cinematic deliverables. Respond helpfully in the users language.",
+  "deploy": {},
+  "duties": ["勤労の義務"],
+  "governance": {
+    "raci": "responsible",
+    "classification": "internal",
+    "complianceFrameworks": ["dogaka-policy"]
+  },
+  "kpi": ["credits の獲得"],
+  "name": "etzhayyim-wasm-dogaka",
+  "nanoid": "d0g4k4x1",
+  "performerType": "service",
+  "profile": {
+    "agentType": "semi-autonomous",
+    "capabilities": [
+      "shot-management",
+      "usd-scene-graph",
+      "neural-geometry",
+      "temporal-field",
+      "neural-render",
+      "diffusion-cinematic",
+      "exr-composite",
+      "final-encode"
+    ],
+    "description": "3D cinematic video appview -- author USD shots and render through the 8-stage kami-cine neural pipeline.",
+    "displayName": "Dogaka",
+    "isBot": true
+  },
+  "project": "dogaka",
+  "routes": [
+    {
+      "host": "dogaka.etzhayyim.com",
+      "paths": ["/"],
+      "tls": true
+    }
+  ],
+  "runtimeType": "worker",
+  "space": {
+    "channels": [
+      {
+        "default": true,
+        "description": "Public cinematic feed -- new shots, sequences, finalized takes",
+        "kind": "public",
+        "name": "dogaka-feed"
+      }
+    ],
+    "description": "3D cinematic video creation platform powered by KAMI Engine + kami-cine pipeline",
+    "historyVisibility": "world-readable",
+    "joinRule": "public",
+    "name": "Dogaka"
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "app.bsky.feed.like",
+        "app.bsky.graph.follow",
+        "com.etzhayyim.apps.dogaka.project",
+        "com.etzhayyim.apps.dogaka.sequence",
+        "com.etzhayyim.apps.dogaka.shot",
+        "com.etzhayyim.apps.dogaka.asset",
+        "com.etzhayyim.apps.dogaka.cameraPath",
+        "com.etzhayyim.apps.dogaka.take",
+        "com.etzhayyim.apps.dogaka.chatMessage",
+        "com.etzhayyim.apps.cine.worldModel",
+        "com.etzhayyim.apps.cine.usdScene",
+        "com.etzhayyim.apps.cine.neuralGeom",
+        "com.etzhayyim.apps.cine.temporalField",
+        "com.etzhayyim.apps.cine.neuralRender",
+        "com.etzhayyim.apps.cine.diffusionPass",
+        "com.etzhayyim.apps.cine.exrSeq",
+        "com.etzhayyim.apps.cine.encode"
+      ]
+    }
+  },
+  "uiType": "appview"
+}
