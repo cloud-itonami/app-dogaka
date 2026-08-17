@@ -1,0 +1,8 @@
+# SPA build output. Not extracted from etzhayyim/root (see README.md "現在地");
+# docs/operator-quickstart.md has the operator create a placeholder here to
+# smoke-test the edge proxy. It must never be committed.
+appview/*/svelte/
+
+# wrangler's local state/cache, created by `wrangler dev` and `--dry-run`.
+.wrangler/
+appview/*/.wrangler/
