@@ -121,8 +121,15 @@ Future Rust crates (deferred — not in this pass): `kami-cine-world-model`, `ka
 
 ## Build & Deploy
 
-```bash
-cd 60-apps/etzhayyim-project-dogaka/appview/etzhayyim-wasm-dogaka-d0g4k4x1
-etzhayyim build
-etzhayyim deploy --smoke-url https://d0g4k4x1.etzhayyim.com/health
-```
+**この節が書いていた手順は、この repo では踏めない。**
+
+- `60-apps/etzhayyim-project-dogaka/…` は**切り出し前の etzhayyim/root のパス**で、ここには無い。
+  正しい入口は `appview/etzhayyim-wasm-dogaka-d0g4k4x1/`。
+- `--smoke-url` が指す `d0g4k4x1.etzhayyim.com` は **DNS に存在しない**（`dogaka.etzhayyim.com` /
+  `dispatcher.etzhayyim.com` / `cdn.etzhayyim.com` も同様。実測 2026-08-17）。live な配備は無い。
+- そもそも committed の設定は build を通らない —— `wrangler.jsonc` の `assets.directory`
+  (`./svelte/build`) が切り出されていないため。
+
+実際に踏める手順（`--dry-run` とローカル実行のみ、deploy はしない）と、各エンドポイントの
+実測応答は **[`docs/operator-quickstart.md`](docs/operator-quickstart.md)**。現在地の要約は
+[`README.md`](README.md)。
