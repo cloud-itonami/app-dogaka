@@ -5,7 +5,7 @@
 レンダリングパイプラインそのものではない（8 段の `kami-cine` は K8s の LangServer pod 側で走る）。
 
 姉妹プロジェクト: `mangaka`（静止画のコマ）/ `animeka`（セルのタイムライン）/ **`dogaka`（3D・実写のショット）**。
-atom は `shot`、内部表現は USD scene graph。設計の正本は **[`CLAUDE.md`](CLAUDE.md)**（DID 構成・
+atom は `shot`、内部表現は USD scene graph。設計の正本は **[`AGENTS.md`](AGENTS.md)**（DID 構成・
 3-tier write・レコード型・8 段パイプライン）。この README は *設計* ではなく **今この repo に何が在って、
 何ができるか**を書く。
 
@@ -13,7 +13,7 @@ atom は `shot`、内部表現は USD scene graph。設計の正本は **[`CLAUD
 
 | パス | 役割 |
 |---|---|
-| `CLAUDE.md` | 設計の正本。DID 構成、Tier 1–3 の書き込み、`com.etzhayyim.apps.dogaka.*` / `.cine.*` のレコード型、8 段パイプライン |
+| `AGENTS.md` | 設計の正本。DID 構成、Tier 1–3 の書き込み、`com.etzhayyim.apps.dogaka.*` / `.cine.*` のレコード型、8 段パイプライン |
 | `appview/etzhayyim-wasm-dogaka-d0g4k4x1/src/app.ts` | Worker 本体（108 行）。`/health` `/_app/meta` と `/xrpc/*` の中継だけ |
 | `appview/.../wrangler.jsonc` | Worker の配備定義（routes / vars / service binding / secrets store） |
 | `appview/.../kotodama.jsonld` | actor 記述（`did:web:dogaka.etzhayyim.com`、capabilities、subscribeRepos の購読集合） |
@@ -59,7 +59,7 @@ committed の設定のまま dry-run が exit 0 で通り、`wrangler dev` は�
 
 ## 触る前に知っておくべきこと
 
-- **`CLAUDE.md` の "Build & Deploy" にあった `cd 60-apps/etzhayyim-project-dogaka/...` は
+- **`AGENTS.md` の "Build & Deploy" にあった `cd 60-apps/etzhayyim-project-dogaka/...` は
   切り出し前のモノレポのパス**で、この repo には存在しない。正しい入口は
   `appview/etzhayyim-wasm-dogaka-d0g4k4x1/`（quickstart 参照）。
 - **`/xrpc/*` は dispatcher が到達不能だと 500 を返す**（構造化エラーではなく未捕捉の例外）。
